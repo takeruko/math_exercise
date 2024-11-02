@@ -188,22 +188,22 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
           <div class="container text-center">
             <div class="row row-cols-2">
               <div class="col">
-                <button type="button" className="btn btn-primary m-3 ans-btn" onClick={() => {showAnswer(q, answers[0]);}}>
+                <button type="button" className="btn btn-primary m-1 ans-btn" onClick={() => {showAnswer(q, answers[0]);}}>
                   <span className='ans-txt'>{answers[0]}</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" className="btn btn-primary m-3 ans-btn" onClick={() => {showAnswer(q, answers[1]);}}>
+                <button type="button" className="btn btn-primary m-1 ans-btn" onClick={() => {showAnswer(q, answers[1]);}}>
                   <span className='ans-txt'>{answers[1]}</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" className="btn btn-primary m-3 ans-btn" onClick={() => {showAnswer(q, answers[2]);}}>
+                <button type="button" className="btn btn-primary m-1 ans-btn" onClick={() => {showAnswer(q, answers[2]);}}>
                   <span className='ans-txt'>{answers[2]}</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" className="btn btn-primary m-3 ans-btn" onClick={() => {showAnswer(q, answers[3]);}}>
+                <button type="button" className="btn btn-primary m-1 ans-btn" onClick={() => {showAnswer(q, answers[3]);}}>
                   <span className='ans-txt'>{answers[3]}</span>
                 </button>
               </div>
