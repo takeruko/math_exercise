@@ -57,10 +57,15 @@ const getTimestamp = (locale = 'ja-JP') => {
 
 const Countdown = ({ initialSeconds, onComplete }) => {
   const [seconds, setSeconds] = useState(initialSeconds);
+  const [targetTime, setTargettime] = useState(new Date().getTime() + initialSeconds * 1000);
 
   useEffect(() => {
       if (seconds > 0) {
-          const timerId = setTimeout(() => setSeconds(seconds - 1), 1000);
+          const timerId = setTimeout(() => {
+            const now = new Date().getTime();
+            const delta = Math.ceil((targetTime - now) / 1000);
+            setSeconds(delta);
+          }, 1000);
           return () => clearTimeout(timerId);
       } else {
           // secondsが0になった時にonCompleteを呼び出す
@@ -167,7 +172,7 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
         showResult && 
         <div className='header'>
           <h1>{title}</h1>
-          <div className='result'>今回のスコア:{score}</div>
+          <div className='result'>スコア:{score}</div>
           <ResultList app_name={app_name} newScore={newScore} />
         </div>
       }
