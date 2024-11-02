@@ -41,12 +41,12 @@ h1 {
 }
 
 .ans-btn {
-    width: 200px;
+    width: 150px;
     max-width: 30%;
 }
 
 .ans-txt {
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 #show-qrcode {

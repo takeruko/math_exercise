@@ -154,7 +154,7 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
       { showReadyGo && 
         <div className='header'>
           <h1>{title}</h1>
-          <div>スコア:{score}</div>
+          <div>スコア:{score}点</div>
           <div>残り{sec}秒</div>
           <ReadyGo onComplete={startGame} />
         </div>
@@ -162,7 +162,7 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
       { showEnd &&
         <div className='header'>
           <h1>{title}</h1>
-          <div>スコア:{score}</div>
+          <div>スコア:{score}点</div>
           <div>残り0秒</div>
           <div><span className='message'>終了！！</span></div>
           <button type="button" className="btn btn-primary p-3 m-3 menu-btn" onClick={() => {saveAndShowResult(app_name, score, timestamp);}}><span>結果を見る</span></button>
@@ -172,15 +172,16 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
         showResult && 
         <div className='header'>
           <h1>{title}</h1>
-          <div className='result'>スコア:{score}</div>
+          <div className='result'>スコア:{score}点</div>
           <ResultList app_name={app_name} newScore={newScore} />
+          <Link to="/" className="btn btn-primary p-3 m-3 menu-btn"><span>メニューへ</span></Link>
         </div>
       }
       { showApp && 
         <div>
           <div className='header'>
             <h1>{title}</h1>
-            <div>スコア:{score}</div>
+            <div>スコア:{score}点</div>
             <Countdown initialSeconds={sec} onComplete={endGame} />
           </div>
           <div className='question'>{q}</div>
