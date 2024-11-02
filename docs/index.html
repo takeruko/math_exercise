@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>算数トレーニング</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="shortcut icon" href="./favicon.ico">
+    <link rel="apple-touch-icon" href="./media/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="./media/favicon/android-chrome-192x192.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  </head>
+
+  <body>
+    <div role="navigation" class="navbar navbar-expand-md navbar-dark p-3" style="background-color:rgb(20, 113, 220);">
+        <a class="navbar-brand" href="#">算数トレーニング</a>
+        <input type="checkbox" id="show-qrcode">
+        <label class="navbar-nav" for="show-qrcode" id="show-qrcode-label">URLをQRコードで表示</label>
+        <!-- ポップアップ部分 -->
+        <div id="overlay">
+          <label for="show-qrcode" id="bg_gray"></label> <!-- ウィンドウの外のグレーの領域 -->
+          <div id="qrcode-window"> <!-- ウィンドウ部分 -->
+            <p id="qrcode-description">スマホのカメラで読み取ると<br />アプリが開きます</p>
+            <img src="./media/image/qr_code.png" />
+          </div>
+        </div>
+    </div>
+
+    <div id="app"></div>
+    
+    <script src="client.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </body>
+</html>
