@@ -69,7 +69,7 @@ const Countdown = ({ initialSeconds, onComplete }) => {
   }, [seconds, onComplete]);
 
   return (
-      <div className='header'>残り{seconds}秒</div>
+      <div>残り{seconds}秒</div>
   );
 };
 
@@ -176,7 +176,6 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
           <div className='header'>
             <h1>{title}</h1>
             <div>スコア:{score}</div>
-            <div>残り{sec}秒</div>
             <Countdown initialSeconds={sec} onComplete={endGame} />
           </div>
           <div className='question'>{q}</div>

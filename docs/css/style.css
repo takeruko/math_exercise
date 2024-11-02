@@ -28,7 +28,7 @@ h1 {
 
 .header .number {
     padding-top: 50px;
-    font-size: 8em;
+    font-size: 6em;
 }
 
 .header .result {
@@ -74,12 +74,12 @@ h1 {
 
 #ans-mark .correct {
     color: red;
-    font-size: 8em;
+    font-size: 4em;
 }
 
 #ans-mark .incorrect {
     color: blue;
-    font-size: 8em;
+    font-size: 4em;
 }
 
 #ans-mark span {
@@ -87,13 +87,13 @@ h1 {
 }
 
 .get-score {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
     color: red;
 }
 
 .lost-score {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
     color: blue;
 }
