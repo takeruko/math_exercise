@@ -253,12 +253,16 @@ const ResultList = ({app_name, newScore}) => {
   return (
     <div>
       <h2>{isHiscore ? '新記録！！' : ''}</h2>
-      <ol>
-        {appResult.map((v) => <li className={v.id === newScore.id ? 'newscore' : ''}>{v.score}点 : {v.timestamp}</li>)}
+      <ol className="list-group list-group-numbered">
+        {appResult.map((v) => 
+          <li className={"list-group-item d-flex justify-content-between align-items-start " + (v.id === newScore.id ? 'list-group-item-warning':'')}>
+            <div className="ms-2 me-auto fw-bold">{v.timestamp}</div>
+            <span className="badge bg-primary rounded-pill">{v.score}点</span>
+          </li>
+        )}
       </ol>
     </div>
   );
-
 };
 
 const MenuScreen = () => {
@@ -281,9 +285,9 @@ const MathApp = () => {
             <Route path="DivisorBeginner" element={
               <DivisorApp
                 a_min={2}
-                a_max={9}
+                a_max={10}
                 b_min={2}
-                b_max={9}
+                b_max={10}
                 ans_num={4}
                 sec={60}
                 app_name={'DivisorBeginner'}  
