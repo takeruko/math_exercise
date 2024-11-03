@@ -22,7 +22,7 @@ const makeQuestion = (a_min, a_max, b_min, b_max, ans_num) => {
   let q = a * b;
   let ans_min = a_min < b_min ? a_min : b_min;
   let ans_max = a_max > b_max ? a_max : b_max;
-  
+
   let ans = [a];
   do {
     let new_ans = getRandomInt(ans_min, ans_max);
@@ -31,9 +31,12 @@ const makeQuestion = (a_min, a_max, b_min, b_max, ans_num) => {
     }
   } while (ans.length < ans_num);
 
+  const answers = ans.sort((a, b) => {return a - b;});
+
   return {
     "question": q,
-    "answers": ans.sort((a, b) => {return a - b;})
+    "answers": answers,
+    "correct_idx": answers.indexOf(a)
   };
 };
 
@@ -113,6 +116,7 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
   const title = APP_DEF[app_name].title;
   const q = question.question;
   const answers = question.answers;
+  const correct_idx = question.correct_idx;
 
   const startGame = () => {
     setShowReadyGo(false);
@@ -147,6 +151,19 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
   const getNextQuestion = () => {
     setQuestion(makeQuestion(a_min, a_max, b_min, b_max, ans_num));
     setShowAnswerMark(false);
+  };
+
+  const getButtonClass = (idx) => {
+    const baseClass = 'btn m-1 ans-btn ';
+    if (!showAnswerMark) {
+      return baseClass + 'btn-primary';
+    }
+    else if (idx === correct_idx) {
+      return baseClass + 'btn-danger';
+    }
+    else {
+      return baseClass + 'btn-secondary';
+    }
   };
 
   return (
@@ -188,22 +205,30 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
           <div class="container text-center">
             <div class="row row-cols-2">
               <div class="col">
-                <button type="button" className="btn btn-primary m-1 ans-btn" onClick={() => {showAnswer(q, answers[0]);}}>
+                <button type="button"
+                        className={ "btn m-1 ans-btn " + (showAnswerMark ? (correct_idx === 0 ? 'btn-danger' : 'btn-secondary') : 'btn-primary') }
+                        onClick={() => {showAnswer(q, answers[0]);}}>
                   <span className='ans-txt'>{answers[0]}</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" className="btn btn-primary m-1 ans-btn" onClick={() => {showAnswer(q, answers[1]);}}>
+                <button type="button"
+                        className={ "btn m-1 ans-btn " + (showAnswerMark ? (correct_idx === 1 ? 'btn-danger' : 'btn-secondary') : 'btn-primary') }
+                        onClick={() => {showAnswer(q, answers[1]);}}>
                   <span className='ans-txt'>{answers[1]}</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" className="btn btn-primary m-1 ans-btn" onClick={() => {showAnswer(q, answers[2]);}}>
+                <button type="button"
+                        className={ "btn m-1 ans-btn " + (showAnswerMark ? (correct_idx === 2 ? 'btn-danger' : 'btn-secondary') : 'btn-primary') }
+                        onClick={() => {showAnswer(q, answers[2]);}}>
                   <span className='ans-txt'>{answers[2]}</span>
                 </button>
               </div>
               <div class="col">
-                <button type="button" className="btn btn-primary m-1 ans-btn" onClick={() => {showAnswer(q, answers[3]);}}>
+                <button type="button"
+                        className={ "btn m-1 ans-btn " + (showAnswerMark ? (correct_idx === 3 ? 'btn-danger' : 'btn-secondary') : 'btn-primary') }
+                        onClick={() => {showAnswer(q, answers[3]);}}>
                   <span className='ans-txt'>{answers[3]}</span>
                 </button>
               </div>
