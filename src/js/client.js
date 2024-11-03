@@ -206,28 +206,28 @@ const DivisorApp = ({a_min, a_max, b_min, b_max, ans_num, sec, app_name}) => {
             <div class="row row-cols-2">
               <div class="col">
                 <button type="button"
-                        className={ "btn m-1 ans-btn " + (showAnswerMark ? (correct_idx === 0 ? 'btn-danger' : 'btn-secondary') : 'btn-primary') }
+                        className={ getButtonClass(0) }
                         onClick={() => {showAnswer(q, answers[0]);}}>
                   <span className='ans-txt'>{answers[0]}</span>
                 </button>
               </div>
               <div class="col">
                 <button type="button"
-                        className={ "btn m-1 ans-btn " + (showAnswerMark ? (correct_idx === 1 ? 'btn-danger' : 'btn-secondary') : 'btn-primary') }
+                        className={ getButtonClass(1) }
                         onClick={() => {showAnswer(q, answers[1]);}}>
                   <span className='ans-txt'>{answers[1]}</span>
                 </button>
               </div>
               <div class="col">
                 <button type="button"
-                        className={ "btn m-1 ans-btn " + (showAnswerMark ? (correct_idx === 2 ? 'btn-danger' : 'btn-secondary') : 'btn-primary') }
+                        className={ getButtonClass(2) }
                         onClick={() => {showAnswer(q, answers[2]);}}>
                   <span className='ans-txt'>{answers[2]}</span>
                 </button>
               </div>
               <div class="col">
                 <button type="button"
-                        className={ "btn m-1 ans-btn " + (showAnswerMark ? (correct_idx === 3 ? 'btn-danger' : 'btn-secondary') : 'btn-primary') }
+                        className={ getButtonClass(3) }
                         onClick={() => {showAnswer(q, answers[3]);}}>
                   <span className='ans-txt'>{answers[3]}</span>
                 </button>
