@@ -313,9 +313,9 @@ const MenuScreen = () => {
 const MathApp = () => {
   
   return (
-    <BrowserRouter basename='/'>
+    <BrowserRouter basename='/math_exercise'>
         <Routes>
-          <Route exact path="/math_exercise">
+          <Route exact path="/">
             <Route index element={<MenuScreen />} />
             <Route path="DivisorBeginner" element={
               <DivisorApp
