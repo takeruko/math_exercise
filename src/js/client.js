@@ -24,8 +24,7 @@ const makeQuestion = (a_min, a_max, b_min, b_max, ans_num) => {
   let b = getRandomInt(b_min, b_max);
   let q = a * b;
   let ans_min = a_min < b_min ? a_min : b_min;
-  let ans_max = a_max;
-  //let ans_max = a_max > b_max ? a_max : b_max;
+  let ans_max = a_max > b_max ? a_max : b_max;
 
   let ans = [a];
   do {
@@ -333,7 +332,7 @@ const MathApp = () => {
                 a_min={2}
                 a_max={10}
                 b_min={2}
-                b_max={19}
+                b_max={15}
                 ans_num={4}
                 sec={60}  
                 app_name={'DivisorMiddle'}  
