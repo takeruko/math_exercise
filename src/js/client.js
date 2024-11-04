@@ -9,6 +9,9 @@ const APP_DEF = {
   },
   'DivisorMiddle': {
     title: '約数はどれだ？ 中級(60秒)'
+  },
+  'DivisorExpert': {
+    title: '約数はどれた？ 上級(60秒)'
   }
 };
 
@@ -21,7 +24,8 @@ const makeQuestion = (a_min, a_max, b_min, b_max, ans_num) => {
   let b = getRandomInt(b_min, b_max);
   let q = a * b;
   let ans_min = a_min < b_min ? a_min : b_min;
-  let ans_max = a_max > b_max ? a_max : b_max;
+  let ans_max = a_max;
+  //let ans_max = a_max > b_max ? a_max : b_max;
 
   let ans = [a];
   do {
@@ -258,7 +262,7 @@ const saveResult = (app_name, score, timestamp) => {
 
   // 今回のスコアをローカルストレージに保存
   const newScore = {
-    id: appResult.length + 1,
+    id: Date.now(),
     score: score,
     timestamp: timestamp
   };
@@ -282,7 +286,7 @@ const ResultList = ({app_name, newScore}) => {
 
   return (
     <div>
-      <h2>{isHiscore ? '新記録！！' : ''}</h2>
+      <h2 className='strong-msg'>{isHiscore ? '新記録！！' : ''}</h2>
       <ol className="list-group list-group-numbered">
         {appResult.map((v) => 
           <li className={"list-group-item d-flex justify-content-between align-items-start " + (v.id === newScore.id ? 'list-group-item-warning':'')}>
@@ -300,7 +304,8 @@ const MenuScreen = () => {
     <div className="text-center">
       <h1>約数はどれだ？</h1>
       <Link to="/DivisorBeginner" className="btn btn-primary p-3 m-3 menu-btn"><span>初級(60秒)</span></Link><br />
-      <Link to="/DivisorMiddle" className="btn btn-primary p-3 m-3 menu-btn"><span>中級(60秒)</span></Link>
+      <Link to="/DivisorMiddle" className="btn btn-primary p-3 m-3 menu-btn"><span>中級(60秒)</span></Link><br />
+      <Link to="/DivisorExpert" className="btn btn-primary p-3 m-3 menu-btn"><span>上級(60秒)</span></Link>
     </div>
   );
 };
@@ -308,9 +313,9 @@ const MenuScreen = () => {
 const MathApp = () => {
   
   return (
-    <BrowserRouter basename='/math_exercise'>
+    <BrowserRouter basename='/'>
         <Routes>
-          <Route exact path="/">
+          <Route exact path="/math_exercise">
             <Route index element={<MenuScreen />} />
             <Route path="DivisorBeginner" element={
               <DivisorApp
@@ -326,12 +331,23 @@ const MathApp = () => {
             <Route path="DivisorMiddle" element={
               <DivisorApp
                 a_min={2}
-                a_max={15}
+                a_max={10}
                 b_min={2}
-                b_max={15}
+                b_max={19}
                 ans_num={4}
                 sec={60}  
                 app_name={'DivisorMiddle'}  
+              />
+            } />
+            <Route path="DivisorExpert" element={
+              <DivisorApp
+                a_min={2}
+                a_max={19}
+                b_min={2}
+                b_max={19}
+                ans_num={4}
+                sec={60}  
+                app_name={'DivisorExpert'}  
               />
             } />
           </Route>
