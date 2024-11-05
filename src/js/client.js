@@ -19,22 +19,35 @@ const getRandomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+const shuffleArray = (array) => {
+  let tmpArray = structuredClone(array);
+  for (let i = tmpArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [tmpArray[i], tmpArray[j]] = [tmpArray[j], tmpArray[i]];
+  }
+  return tmpArray;
+};
+
 const makeQuestion = (a_min, a_max, b_min, b_max, ans_num) => {
-  let a = getRandomInt(a_min, a_max);
-  let b = getRandomInt(b_min, b_max);
-  let q = a * b;
-  let ans_min = a_min < b_min ? a_min : b_min;
-  let ans_max = a_max > b_max ? a_max : b_max;
-
-  let ans = [a];
+  let a = 0;
+  let b = 0;
+  let q = 0;
+  let answers = [];
   do {
-    let new_ans = getRandomInt(ans_min, ans_max);
-    if (!ans.includes(new_ans) && q % new_ans !== 0) {
-      ans.push(new_ans);
+    a = getRandomInt(a_min, a_max);
+    b = getRandomInt(b_min, b_max);
+    q = a * b;
+    
+    let ans = [];
+    for (let i = a_min; i <= a_max; i++) {
+      if (q % i !== 0) {
+        ans.push(i);
+      }
     }
-  } while (ans.length < ans_num);
-
-  const answers = ans.sort((a, b) => {return a - b;});
+    ans = shuffleArray(ans);
+    ans.unshift(a);
+    answers = ans.slice(0, ans_num).sort((a, b) => {return a - b;});
+  } while (answers.length < ans_num);
 
   return {
     "question": q,
@@ -331,8 +344,8 @@ const MathApp = () => {
               <DivisorApp
                 a_min={2}
                 a_max={10}
-                b_min={2}
-                b_max={15}
+                b_min={11}
+                b_max={19}
                 ans_num={4}
                 sec={60}  
                 app_name={'DivisorMiddle'}  
@@ -340,10 +353,10 @@ const MathApp = () => {
             } />
             <Route path="DivisorExpert" element={
               <DivisorApp
-                a_min={2}
-                a_max={19}
+                a_min={11}
+                a_max={20}
                 b_min={2}
-                b_max={19}
+                b_max={10}
                 ans_num={4}
                 sec={60}  
                 app_name={'DivisorExpert'}  
